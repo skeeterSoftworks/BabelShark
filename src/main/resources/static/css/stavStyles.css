@@ -1,0 +1,44 @@
+body {background-color: #cccc66;}
+
+header { margin : 20px;
+		display : inline;
+		}
+
+nav { float: left; width: 150px; }
+
+main { margin-left: 165px; }
+
+footer { margin-left: 165px;
+margin-top: 300px; }
+
+#logomain{
+	width: 120px;
+	height: 120px;
+	float: left;
+margin-right: 10px;
+border: 3px ridge #000000;
+
+}
+.formbutts{margin: 5px;}
+
+#mainCaption{
+	font-size : 40px;
+	font-family: "Times New Roman", Times, serif;
+	text-shadow: 3px 3px 3px #666;
+align: middle;
+margin-left: 300px;
+}
+#prekid{
+	clear: left;
+}
+
+#storyCont{
+	width: 400px;
+	height: 100px;
+}
+
+#wrapper {
+	margin : 10px;
+	padding : 10px;
+	background-color: #cccc33;
+}

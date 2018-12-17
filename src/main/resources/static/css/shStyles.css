@@ -1,0 +1,44 @@
+table, th, td{
+  
+  border: 3px, ridge, #000033;
+}
+
+header img{float: left;
+            margin: 10px;}
+
+body {background-color:
+#90CAF9; }
+
+header h1   {text-align: center;
+              padding: 10px;
+              text-shadow: 3px 4px 5px #111;
+              font-size: 4em;}
+header {background-color:#1E88E5}
+
+nav{float: left;
+    width: 190px;
+clear:both;}
+
+nav ul {list-style: none;}
+
+nav ul li {font-size: 22px;
+margin-right: 10px;
+margin-bottom: 4px;}
+
+main{margin-left: 300px;
+      margin-top: 60px;}
+
+
+
+#wrapper{
+  background-color: #BBDEFB;
+  width: 1048px;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+footer{text-align: center;
+font-style: italic;
+background-color: #CCCCFF;
+clear: both;}
