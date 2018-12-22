@@ -16,39 +16,30 @@
 		<h1>BabelShark  </h1></header>
 		
 		<nav><ul>
+				<li> <a th:href="@{login}">Log in</a></li>
 				<li>Home</li>
-				<li>Students</li>
+				<li><a th:href="@{students}">Students</a></li>
 				<li>Gallery</li>
 			</ul>
 		</nav>
 
 		<main>
-			<div class="studentslist" th:unless="${#lists.isEmpty(studentsList)}">
-    
-			<h2>List of Students:</h2>
-  
-			<table id="studList" border="1">
-			<thead>
-				<tr>
-					<th >Name</th>
-					<th >Level</th>
-					<th >Language</th>
-				</tr>
-			</thead>
-    
-			<tbody>
-				<tr th:each="stud : ${studentsList}">
-					<td th:text="${{stud.name}}">Name</td>
-					<td th:text="${stud.level}">Level</td>
-					<td th:text="${stud.language}">Language</td>
-        
-				</tr>
-      
-			</tbody>
-			</table>
-			</div>
-			<br><br><br><br><br><br><br><br><br><br>
-		</main>
+			<p>Welcome to BabelShark Home, a website for a fictitious Language school for foreign languages.
+			The website is a demo of my IT knowledge: </p>
+			<dl>
+			<dt>Spring Boot, Spring MVC, Spring Security</dt>
+			<dd>The base of the entire webapp. Controllers and such. Login and authorization.<br><br> </dd>
+			<dt>JPA and Hibernate</dt><dd>Mapping objects to SQL tables.<br><br></dd>
+			<dt>MySQL</dt><dd>The DB was first set up manually via SQL console. Not that I don't know
+			how to plant it in a .sql file.<br><br></dd>
+			<dt>HTML and CSS</dt><dd>Some pages are public, some are templates supplemented by Thymeleaf.<br><br></dd>
+			<dt>Simple UI design</dt><dd>I'm not much of a visual artist, but hey, I designed that silly shark logo with Adobe illustrator.<br><br></dd>
+			
+			</dl>
+			
+			
+			
+					</main>
 		
 		<footer style="float:bottom">All code and design by Bojan Dejanovic</footer>
 

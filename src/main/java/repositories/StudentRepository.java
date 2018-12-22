@@ -6,4 +6,5 @@ import models.Student;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
 
+
 }

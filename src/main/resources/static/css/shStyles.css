@@ -9,6 +9,8 @@ header img{float: left;
 body {background-color:
 #90CAF9; }
 
+dt {text-style: bold;}
+
 header h1   {text-align: center;
               padding: 10px;
               text-shadow: 3px 4px 5px #111;

@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
@@ -18,7 +19,7 @@ import javax.persistence.JoinColumn;
 @Table (name="students")
 public class Student {
 	
-	@Id 
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="student_id")
 	private Integer id;
 	
@@ -30,7 +31,7 @@ public class Student {
 	
 	private String language;
 	
-	@ManyToMany(cascade={CascadeType.ALL})
+	@ManyToMany(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
 	@JoinTable(name="student_grade", joinColumns={@JoinColumn(name="student_id")},
 	inverseJoinColumns={@JoinColumn(name="grade_id")})
 	Set<Grade> grades = new HashSet<>();
@@ -63,11 +64,11 @@ public class Student {
 
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

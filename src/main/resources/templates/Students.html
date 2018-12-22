@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/shStyles.css" >
+<title>BabelShark- Our Students</title>
+
+<style>td { 
+    padding: 10px;
+}</style>
+</head>
+
+
+<body>
+<div id="wrapper">
+
+			<header>
+				<img id="logo" src="images/BabelShark.png" width="160px" height="80px" />
+				<h1>BabelShark  </h1>
+			</header>
+			
+		<nav><ul>
+				<li> <a th:href="login.html">Log in</a></li>
+				<li>Home</li>
+				<li>Students</li>
+				<li>Gallery</li>
+			</ul>
+		</nav>
+
+		<main>
+			<div class="studentslist" th:unless="${#lists.isEmpty(studentsList)}">
+    
+			<h2>List of Students:</h2>
+  
+			<table id="studList" border="1">
+			<thead>
+				<tr>
+					<th >Name</th>
+					<th >Level</th>
+					<th >Language</th>
+				</tr>
+			</thead>
+    
+			<tbody>
+				<tr th:each="stud : ${studentsList}">
+					<td th:text="${{stud.name}}">Name</td>
+					<td th:text="${stud.level}">Level</td>
+					<td th:text="${stud.language}">Language</td>
+					<td> <a href="grades.html" th:href="@{/grades(studentId=${stud.id})}">see grades</a></td>
+        			<td> <a  th:href="@{payments(studentId=${student.id})}">see payments</a>	</td>
+        			
+				</tr>
+      
+			</tbody>
+			</table>
+			</div>
+			<br><br><br><br><br>
+			
+			  Add a new student: <br> <br>
+    <form action="#" th:action="@{/newstudent}" th:object="${student}" method="post">
+    	<p>Student: <input type="text" th:field="*{name}" /></p>
+        <p>Level: <input type="text" th:field="*{level}" /></p>
+        <p>Language: <input type="text" th:field="*{language}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+		</main>
+		
+		<footer style="float:bottom">All code and design by Bojan Dejanovic</footer>
+
+</div>
+</body>
+</html>

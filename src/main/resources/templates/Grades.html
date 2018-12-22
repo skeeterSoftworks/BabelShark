@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/shStyles.css" >
+<title>BabelShark- Our Students</title>
+
+<style>td { 
+    padding: 10px;
+}</style>
+</head>
+
+
+<body>
+<div id="wrapper">
+
+			<header>
+				<img id="logo" src="images/BabelShark.png" width="160px" height="80px" />
+				<h1>BabelShark  </h1>
+			</header>
+			
+		<nav><ul>
+				<li> <a th:href="login.html">Log in</a></li>
+				<li>Home</li>
+				<li>Students</li>
+				<li>Gallery</li>
+			</ul>
+		</nav>
+
+		<main>
+			
+			<h2 th:text="${student.name}">' grades</h2>
+  
+			<table id="gradeslist" border="1">
+			<thead>
+				<tr>
+					<th >Language</th>
+					<th >Grade</th>
+					<th >Date</th>
+					<th> Details </th>
+				</tr>
+			</thead>
+    
+			<tbody>
+				<tr th:each="grade : ${student.grades}">
+					<td th:text="${{grade.language}}">Language</td>
+					<td th:text="${grade.grade}">Grade</td>
+					<td th:text="${grade.date}">Date</td>
+					<td th:text="${grade.details}">Details</td>
+				</tr>
+      
+			</tbody>
+			</table>
+			</div>
+
+		</main>
+		
+		<footer style="float:bottom">All code and design by Bojan Dejanovic</footer>
+
+
+</body>
+</html>
