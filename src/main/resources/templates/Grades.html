@@ -30,7 +30,19 @@
 
 		<main>
 			
-			<h2 th:text="${student.name}">' grades</h2>
+			<h2 th:text="${student.name}"></h2>
+			
+			<form action="#" th:action="@{/addgrade(studentid=${student.id})}" method="POST" th:object="${grade}">
+			
+			<p> Grade: <input type="text" th:field="*{grade}"	/></p>
+			<p> Language: <input type="text" th:field="*{language}"/> </p>
+			<p> Details: <input type="text" th:field="*{details}"/> </p>
+			<p><input type="submit" value="Submit" /> <input type="reset" value="reset"/> </p>
+			
+			</form>
+			
+			
+			
   
 			<table id="gradeslist" border="1">
 			<thead>

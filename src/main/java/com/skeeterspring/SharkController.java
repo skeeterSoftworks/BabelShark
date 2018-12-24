@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import models.Grade;
 import models.Student;
 import models.User;
 import repositories.StudentRepository;
@@ -73,8 +74,28 @@ public String students(Model model){
 		
 		Student stu = stuOpt.get();
 		model.addAttribute("student", stu);
+		model.addAttribute("grade", new Grade());
 		
 		return "grades";
+	}
+	
+	@PostMapping("/addgrade")
+	public String addGrade(@ModelAttribute("grade")Grade grade, @RequestParam("studentid")int id){
+		
+		Optional<Student> stuOpt = studentRepository.findById(id);
+		
+		Student stu = stuOpt.get();
+		
+		Set<Grade> studGrades = stu.getGrades();
+		studGrades.add(grade);
+		stu.setGrades(studGrades);
+		studentRepository.save(stu);
+		
+		//Da se nekako ugnezdi request param u model koji se vraca sa return vrednoscu?
+		//dodaju se ocene; nema timestamp, i ne moze se lepo redirectovati u grades jer fali studentid param
+		return "redirect:/students";
+		
+		
 	}
 
 }
