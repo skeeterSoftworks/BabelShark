@@ -21,9 +21,9 @@
 			</header>
 			
 		<nav><ul>
-				<li> <a th:href="login.html">Log in</a></li>
-				<li>Home</li>
-				<li>Students</li>
+				<li> <a th:href="@{login}">Log in</a></li>
+				<li><a th:href="@{/}">Home</a></li>
+				<li><a th:href="@{students}">Students</a></li>
 				<li>Gallery</li>
 			</ul>
 		</nav>
@@ -58,7 +58,7 @@
 				<tr th:each="grade : ${student.grades}">
 					<td th:text="${{grade.language}}">Language</td>
 					<td th:text="${grade.grade}">Grade</td>
-					<td th:text="${grade.date}">Date</td>
+					<td th:text="${#dates.format(grade.date, 'dd-MMM-yyyy')}">Date</td>
 					<td th:text="${grade.details}">Details</td>
 				</tr>
       

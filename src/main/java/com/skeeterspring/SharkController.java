@@ -41,7 +41,7 @@ public class SharkController {
 	}
 	
 	@GetMapping("/students")
-public String students(Model model){
+public String showStudents(Model model){
 		model.addAttribute("student", new Student());
 		return "students";
 	}
@@ -85,10 +85,12 @@ public String students(Model model){
 		Optional<Student> stuOpt = studentRepository.findById(id);
 		
 		Student stu = stuOpt.get();
+		grade.setDate(new Date(System.currentTimeMillis()));
 		
 		Set<Grade> studGrades = stu.getGrades();
 		studGrades.add(grade);
 		stu.setGrades(studGrades);
+		
 		studentRepository.save(stu);
 		
 		//Da se nekako ugnezdi request param u model koji se vraca sa return vrednoscu?

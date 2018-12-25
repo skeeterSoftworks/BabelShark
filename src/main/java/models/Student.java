@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -34,23 +35,32 @@ public class Student {
 	@ManyToMany(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
 	@JoinTable(name="student_grade", joinColumns={@JoinColumn(name="student_id")},
 	inverseJoinColumns={@JoinColumn(name="grade_id")})
-	Set<Grade> grades = new HashSet<>();
+	private Set<Grade> grades = new HashSet<>();
 	
+	@OneToMany(mappedBy="student",cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
+	private Set<Payment>payments;
 	
 	public Student(){}
 
-	
-
-	public Student(Integer id, String name, String level, String language, Set<Grade> grades) {
+	public Student(Integer id, String name, String level, String language, Set<Grade> grades, Set<Payment> payments) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.level = level;
 		this.language = language;
 		this.grades = grades;
+		this.payments = payments;
 	}
 
+	
 
+	public Set<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(Set<Payment> payments) {
+		this.payments = payments;
+	}
 
 	public Set<Grade> getGrades() {
 		return grades;
@@ -61,8 +71,6 @@ public class Student {
 	public void setGrades(Set<Grade> grades) {
 		this.grades = grades;
 	}
-
-
 
 	public Integer getId() {
 		return id;
