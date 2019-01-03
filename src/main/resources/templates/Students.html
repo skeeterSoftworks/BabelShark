@@ -24,7 +24,7 @@
 				<li> <a th:href="@{login}">Log in</a></li>
 				<li><a th:href="@{/}">Home</a></li>
 				<li><a th:href="@{students}">Students</a></li>
-				<li>Gallery</li>
+				<li>Courses</li>
 			</ul>
 		</nav>
 
@@ -32,8 +32,6 @@
 			<div class="studentslist" th:unless="${#lists.isEmpty(studentsList)}">
     
 			<h2>List of Students:</h2>
-			
-			<p> (the payments' urls are under construction.)</p>
   
 			<table id="studList" border="1">
 			<thead>
@@ -50,7 +48,7 @@
 					<td th:text="${stud.level}">Level</td>
 					<td th:text="${stud.language}">Language</td>
 					<td> <a href="grades.html" th:href="@{/grades(studentId=${stud.id})}">see grades</a></td>
-        			<td> <a  th:href="@{payments(studentId=${student.id})}">see payments</a>	</td>
+        			<td> <a href="payments.html" th:href="@{/payments(studentId=${stud.id})}">see payments</a>	</td>
         			
 				</tr>
       

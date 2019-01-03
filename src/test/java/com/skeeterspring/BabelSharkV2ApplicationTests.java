@@ -1,9 +1,15 @@
 package com.skeeterspring;
 
+import static org.junit.Assert.*;
+
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
+import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +32,7 @@ public class BabelSharkV2ApplicationTests {
 	public void contextLoads() {
 	}
 	
-	@Test
+	//@Test
 	public void saveStudent(){
 		
 		Student stu = new Student();
@@ -45,24 +51,55 @@ public class BabelSharkV2ApplicationTests {
 		
 	}
 	
-	@Test
+	//@Test
 	public void makePayment(){
 		
 		Student stu = new Student();
+		
 		stu.setLanguage("Russian");
 		stu.setLevel("A1");
-		stu.setName("Mik Guryevich");
+		stu.setName("Mika Guryevich");
+		
 		Payment pay = new Payment();
 		pay.setDate(new Date(System.currentTimeMillis()));
 		pay.setQuantity(3500);
-		Set<Payment>pays = new HashSet<>();
-		pays.add(pay);
-		stu.setPayments(pays);
+		
+		stu.addPayment(pay);
 		
 		studentRepository.save(stu);
 		
-		Student guryevich = studentRepository.findByName("Mik Guryevich");
+		Student guryevich = studentRepository.findByName("Mika Guryevich");
 		assert guryevich.getLanguage().equals(stu.getLanguage());
+		
+		Set<Payment> gurPay =  guryevich.getPayments();
+		assertTrue(  gurPay.size()>0);
+	}
+	//@Test
+	public void deleteStudent(){
+		
+		for (int i=138; i<=142;i++){
+		studentRepository.deleteById(i);
+		}
+		
+		studentRepository.deleteById(120);
+		
+	}
+	
+	@Test
+	public void clearGrades(){
+		
+		
+		
+		Optional<Student> stu = studentRepository.findById(102);
+		Student student = stu.get();
+		
+		for (Grade g : student.getGrades()){
+			
+			studentRepository.deleteById(g.getId());
+		}
+		
+		assertTrue(student.getGrades().size()==0);
+		studentRepository.save(student);
 	}
 
 }

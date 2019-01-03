@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import models.Grade;
+import models.Payment;
 import models.Student;
 import models.User;
 import repositories.StudentRepository;
@@ -95,6 +96,43 @@ public String showStudents(Model model){
 		
 		//Da se nekako ugnezdi request param u model koji se vraca sa return vrednoscu?
 		//dodaju se ocene; nema timestamp, i ne moze se lepo redirectovati u grades jer fali studentid param
+		return "redirect:/students";
+		
+		
+	}
+	
+	@GetMapping("/payments")
+	public String showPayments(@RequestParam("studentId")int id, Model model){
+		
+		Optional<Student> stuOpt = studentRepository.findById(id);
+		
+		Student stu = stuOpt.get();
+		model.addAttribute("student", stu);
+		model.addAttribute("payment", new Payment());
+		
+		int sum = 0;
+		Set<Payment> payments = stu.getPayments();
+		for (Payment p: payments){
+			
+			sum+=p.getQuantity();
+			
+		}
+		model.addAttribute("paidfees", sum);
+		
+		return "payments";
+		
+	}
+	
+	@PostMapping("/addpayment")
+	public String addPayment(@ModelAttribute("payment")Payment payment, @RequestParam("studentid")int id){
+		
+		Optional<Student> stuOpt = studentRepository.findById(id);
+		Student stu = stuOpt.get();
+		payment.setDate(new Date(System.currentTimeMillis()));
+		
+		stu.addPayment(payment);
+		studentRepository.save(stu);
+		
 		return "redirect:/students";
 		
 		

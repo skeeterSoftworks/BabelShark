@@ -18,15 +18,45 @@
 			
 		<nav><ul>
 				<li> <a th:href="@{login}">Log in</a></li>
-				<li>Home</li>
+				<li><a th:href="@{/}">Home</a></li>
 				<li><a th:href="@{students}">Students</a></li>
-				<li>Gallery</li>
+				<li>Courses</li>
 			</ul>
 		</nav>
 		
 		<main>
-		
-		
+			
+			<h2 th:text="${student.name}"></h2>
+			
+			<form action="#" th:action="@{/addpayment(studentid=${student.id})}" method="POST" th:object="${payment}">
+			
+			<p> Quantity: <input type="text" th:field="*{quantity}"	/></p>
+			
+			<p><input type="submit" value="Add payment" /> <input type="reset" value="reset"/> </p>
+			
+			</form>
+			<div th:with="total=${10500-paidfees}">
+			<h3 th:text="|Remaining fees:${total}|">Remaining fees: </h3>
+			</div>
+	
+			
+			<table id="paymentslist" border="1">
+			<caption>Payment history</caption>
+			<thead>
+				<tr>
+					<th >Quantity</th>
+					<th >Date</th>
+				</tr>
+			</thead>
+    
+			<tbody>
+				<tr th:each="payment : ${student.payments}">
+					<td th:text="${{payment.quantity}}">Payment</td>
+					<td th:text="${#dates.format(payment?.date, 'dd-MMM-yyyy')}">Date</td>
+				</tr>
+      
+			</tbody>
+			</table>
 		
 	
 		</main>

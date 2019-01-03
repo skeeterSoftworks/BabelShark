@@ -20,6 +20,10 @@ import javax.persistence.JoinColumn;
 @Table (name="students")
 public class Student {
 	
+	//MOrace ici fetch type eager na oba seta; kada se pozove Student iz baze, ne pozivaju se 
+	//vrednosti iz child tabela pa budu upisane kao NULL vrednosti zbog polupraznog modela
+	//Nesto nije u redu sa placanjima, ne persistuju se. Popraviti pa testirati u JUnit-u.
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="student_id")
 	private Integer id;
@@ -32,13 +36,13 @@ public class Student {
 	
 	private String language;
 	
-	@ManyToMany(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
+	@ManyToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
 	@JoinTable(name="student_grade", joinColumns={@JoinColumn(name="student_id")},
 	inverseJoinColumns={@JoinColumn(name="grade_id")})
 	private Set<Grade> grades = new HashSet<>();
 	
-	@OneToMany(mappedBy="student",cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
-	private Set<Payment>payments;
+	@OneToMany(mappedBy="student",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+	private Set<Payment>payments= new HashSet<>();
 	
 	public Student(){}
 
@@ -60,6 +64,26 @@ public class Student {
 
 	public void setPayments(Set<Payment> payments) {
 		this.payments = payments;
+	}
+	
+	public void clearGrades(){
+		grades.clear();
+	}
+	
+	public void clearPayments(){
+		payments.clear();
+	}
+	public void addPayment(Payment payment){
+		
+		payments.add(payment);
+		payment.setStudent(this);
+		
+	}
+	
+	public void removePayment(Payment payment){
+		
+		payments.remove(payment);
+		payment.setStudent(null);
 	}
 
 	public Set<Grade> getGrades() {
