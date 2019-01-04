@@ -4,6 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/shStyles.css" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/AjaxWisdom.js"></script>
+
 <title>BabelShark- Our Students</title>
 
 <style>td { 
@@ -26,6 +29,13 @@
 				<li><a th:href="@{students}">Students</a></li>
 				<li>Courses</li>
 			</ul>
+			
+			<div id="restgen">
+			<h4>Random REST Quote Generator says: <br></h4>
+			<p class="wisdom"></p>
+			<button onclick="getWisdom()" type="button">Get new wisdom</button>
+			
+			</div>
 		</nav>
 
 		<main>
