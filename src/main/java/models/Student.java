@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -19,21 +21,23 @@ import javax.persistence.JoinColumn;
 @Entity
 @Table (name="students")
 public class Student {
-	
-	//MOrace ici fetch type eager na oba seta; kada se pozove Student iz baze, ne pozivaju se 
-	//vrednosti iz child tabela pa budu upisane kao NULL vrednosti zbog polupraznog modela
-	//Nesto nije u redu sa placanjima, ne persistuju se. Popraviti pa testirati u JUnit-u.
-	
+		
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="student_id")
 	private Integer id;
 	
 	@Column(name="student_name")
+	@Size(min=2, max=20, message="Mora ime izmedju 2 i 20 slova")
+	@NotEmpty
 	private String name;
 	
 	@Column(name="student_level")
+	@Size(min=1, max=2, message="Ne moze tako, mora neki nivo da se upise")
+	@NotEmpty
 	private String level;
 	
+	@NotEmpty
+	@Size(min=2, max=20, message="Ne valja, jezik mora da ima izmedju 2 i 20 slova")
 	private String language;
 	
 	@ManyToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)

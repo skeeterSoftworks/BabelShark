@@ -3,6 +3,7 @@ package com.skeeterspring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,8 @@ import repositories.StudentRepository;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
+import javax.validation.Valid;
 @Controller
 public class SharkController {
 	
@@ -47,7 +50,11 @@ public String showStudents(Model model){
 	}
 	
 	@PostMapping("/newstudent")
-	public String newStudent(@ModelAttribute("student")Student student){
+	public String newStudent(@Valid Student student, BindingResult result){
+		
+		if (result.hasErrors()){
+			return "students";
+		}
 		
 		studentRepository.save(student);
 		
@@ -94,7 +101,7 @@ public String showStudents(Model model){
 		studentRepository.save(stu);
 		
 		//Da se nekako ugnezdi request param u model koji se vraca sa return vrednoscu?
-		//dodaju se ocene; nema timestamp, i ne moze se lepo redirectovati u grades jer fali studentid param
+		//ne moze se lepo redirectovati u grades jer fali studentid param
 		return "redirect:/students";
 		
 		

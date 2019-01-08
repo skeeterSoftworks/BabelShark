@@ -3,13 +3,8 @@ package com.skeeterspring;
 import static org.junit.Assert.*;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-
-import javax.transaction.Transactional;
-
-import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +15,7 @@ import models.Grade;
 import models.Payment;
 import models.Student;
 import repositories.StudentRepository;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -85,7 +81,7 @@ public class BabelSharkV2ApplicationTests {
 		
 	}
 	
-	@Test
+	//@Test
 	public void clearGrades(){
 		
 		
