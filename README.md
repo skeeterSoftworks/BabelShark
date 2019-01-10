@@ -1,11 +1,13 @@
 # BabelShark
 A demo project featuring Spring Boot, MySQL, Hibernate, ORM, Spring MVC, Thymeleaf
 
-The MySQL schema is enclosed in the resources dir. 
-It is meant to contain login info as well (usernames, passwords and roles of app users).
+BabelShark is an E-registry for a fictitious languages school (Like BabelFish, the fish-translator from the Hitch-Hikers' guide, only it's a shark). It is meant to track students' grades and tuition fees, held lessons, exams taken etc. It is meant to be used by teachers, students and the school administration staff.
 
 To test the app, you can also use the embedded H2 DB- add the required dependencies and change datasource parameters
 in the application.properties.
+
+10.01: After wrestling with erroneous logging in for a couple of hours, I've redesigned the User model on a "kako-je-Bog-rekao" basis: I added the 'active' column (which may be used to temporarily suspend user profiles) to please the AuthenticationManagerBuilder. I tried to make a model with just e-mail, username and password but it wouldn't work.
+I added the Registration.html page- it works like a charm, but all new users are registered as ADMINs by default (experimental version). NEW TODO: Designing an admin page where existing admins will manually set roles of newly-registered users as either teachers or students and enable/disable their profiles (or approve their role-requests or something).
 
 09.01: Okay, today I have done most of the dirty work of implementing Spring Security: redesigned the MySQL DB,
 added dependencies for spring-starter-security and Mockito, remodeled the User and Role class (added ManyToMany
@@ -27,8 +29,9 @@ Notable milestones completed last year:
 -Designed the most of the BabelShark DB using native MySQL (yet to add the Group table for individual courses);
 
 Big ToDos:
--Add sign up, modify login.html templates;
+-Add Admin Control panel for manually processing user's role-requests by newly registered users;
 -Add Course/Group .html views to be available to users with 'Teacher' and 'Admin' role;
+-Have a beer.
 
 Small ToDos:
 -I18n: export labels to .properties files;

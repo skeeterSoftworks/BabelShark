@@ -35,8 +35,8 @@ public class UserServiceTest {
 	                                               mockRoleRepository,
 	                                               mockBCryptPasswordEncoder);
 	        user = new User();
-	        user.setUsername("George Roop");
-	        user.setPassword("fashionkiller");
+	        user.setUsername("Anthony Pettis");
+	        user.setPassword("Showtime");
 	        user.setEmail("somemail@mail.org");
 
 	        Mockito.when(mockUserRepository.save(any()))

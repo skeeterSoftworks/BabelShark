@@ -17,11 +17,24 @@ xmlns:th="http://www.thymeleaf.org"
 	<p>Please log in to continue... Won't do much good, still under construction.</p>
 	<p> Login credentials are to be kept in MySQL DB, with proper roles for ADMIN, TEACHER and STUDENT, with their respective permissions.</p>
 	
-  <form action="#" th:action="@{/signin}" th:object="${user}" method="post">
-    	<p>Username: <input type="text" th:field="*{username}" /></p>
-        <p>Password: <input type="text" th:field="*{password}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
+ <form th:action="@{/login}" method="POST" class="form-signin">
+			<h3 class="form-signin-heading" th:text="Welcome"></h3>
+			<br/>
+			 
+			<input type="text" id="email" name="email"  th:placeholder="Email"
+				class="form-control" /> <br/> 
+			<input type="password"  th:placeholder="Password"
+				id="password" name="password" class="form-control" /> <br /> 
+				
+			<div align="center" th:if="${param.error}">
+				<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+</form>
+
+<form th:action="@{/registration}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
+</form> 
   
   
 </main>

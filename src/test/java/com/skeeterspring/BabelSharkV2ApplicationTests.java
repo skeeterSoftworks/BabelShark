@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import models.Grade;
 import models.Payment;
 import models.Student;
+import models.User;
 import repositories.StudentRepository;
 
 
@@ -23,6 +24,9 @@ public class BabelSharkV2ApplicationTests {
 	
 	@Autowired
 	StudentRepository studentRepository;
+	
+	@Autowired
+	UserService userService;
 
 	@Test
 	public void contextLoads() {
@@ -96,6 +100,16 @@ public class BabelSharkV2ApplicationTests {
 		
 		assertTrue(student.getGrades().size()==0);
 		studentRepository.save(student);
+	}
+	
+	@Test
+	public void loginTest(){
+		
+		User user = userService.findUserByEmail("ghostskeeter@gmail.com");
+		
+		assertEquals(user.getUsername(),"dejanovic");
+		assertEquals(user.getPassword(),"bojan");
+		
 	}
 
 }
