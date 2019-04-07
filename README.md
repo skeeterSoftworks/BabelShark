@@ -5,6 +5,13 @@ BabelShark is an E-registry for a fictitious languages school (Like BabelFish, t
 
 To test the app, you can also use the embedded H2 DB- add the required dependencies and change datasource parameters
 in the application.properties.
+-----------------------------------------------------------------------------------------
+
+
+07.04: I made the first big step in implementing React.js. After several unsuccessful Maven builds I finally managed to make the WebPack plugin pack the js files to a bundle.js (koji je to bezobrazluk da Webpack pretresa KOMENTARE? i zali se na nepostojece commented-out importe??). 
+
+I'm really starting to like the modularity of React.js. For now I have made that single student list component, and added buttons which will call/fetch grades and payments info from a Spring REST controller which means I will no longer need separate static HTML pages for every batch-info display, but will update all components asynchronously instead. 
+TO DO: replace the native fetch method with async/await method as I've seen people do around the Internets.
 
 22.03: It's been a while since the last update- I've been learning big and diverse stuff such as RxJava, Retrofit library (a slight digression into Android programming) as well as... React.js. Today I started translating the pages of HTML+Thymeleaf into React.js components and such. In other words, Babelshark gets a whole new and improved Frontend ;)
 Also, Maven was a little fussy about the Frontend plugin for Node and NPM (it wouldn't clean install the project from Eclipse properly so I C&Ied it from the command prompt. I've also installed Node and NPM on my machine to facilitate the design of pages, and as soon as I finish the most of the View, I will Webpack it and ship it bundled(js) to the Spring app, and upload it to gitHub.
@@ -32,8 +39,10 @@ Notable milestones completed last year:
 -Designed the most of the BabelShark DB using native MySQL (yet to add the Group table for individual courses);
 
 Big ToDos:
+-Switch to using REST calls instead of serving HTML pages for each HTTP req;
+-Use RxJava and Optionals;
 -Add Admin Control panel for manually processing user's role-requests by newly registered users;
--Add Course/Group .html views to be available to users with 'Teacher' and 'Admin' role;
+-Add Course/Group views to be available to users with 'Teacher' and 'Admin' role;
 -Have a beer.
 
 Small ToDos:
