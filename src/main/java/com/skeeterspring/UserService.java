@@ -2,6 +2,7 @@ package com.skeeterspring;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,4 +46,8 @@ public class UserService {
 	        return user;
 	    }
 
+	    public List<User> findAllUsers(){
+	    	
+	    	return userRepository.findAll();
+	    }
 }

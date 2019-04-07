@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta charset="UTF-8">
+<title>Admin Control Panel</title>
+
+<link rel="stylesheet" href="/css/shStyles.css" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="/js/AjaxWisdom.js"></script>
+<style>td { 
+    padding: 10px;
+}</style>
+
+</head>
+
+
+<body>
+
+<div id="wrapper">
+
+			<header>
+				<img id="logo" src="/images/BabelShark.png" width="160px" height="80px" />
+				<h1>BabelShark  </h1>
+			</header>
+			
+		<nav><ul>
+				<li> <a th:href="@{login}">Log in</a></li>
+				<li><a th:href="@{/}">Home</a></li>
+				<li><a th:href="@{students}">Students</a></li>
+				<li>Courses</li>
+			</ul>
+			
+			<div id="restgen">
+			<h4>Random REST Quote Generator says: <br></h4>
+			<p class="wisdom"></p>
+			<button onclick="getWisdom()" type="button">Get new wisdom</button>
+			
+			</div>
+		</nav>
+
+	<main>
+		<div class="studentsList" th:unless="${#lists.isEmpty(usersList)}">
+		<table>
+		
+		<thead>
+		<tr>
+		<th>Username</th>
+		<th>Email</th>
+		<th>Role</th>
+		<th>Active</th>
+		</tr>
+		</thead>
+		
+		</tbody>
+		
+		<tr th:each="user:${usersList}">
+		<td th:text="${user.username}">username</td>
+		<td th:text="${user.email}">email</td>
+		<td>
+		<table>
+			<tr th:each="role:${user.roles}">
+			<td th:text="${role.roleName}"></td>
+			</tr>
+		</table>
+		</td>
+
+		<td th:text="#{|bool.${user.active}|}">yes</td>
+		
+		</tr>
+		
+		</tbody>
+		
+		</table>
+</div>
+</main>
+</div>
+</body>
+</html>

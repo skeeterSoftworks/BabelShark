@@ -9,15 +9,19 @@ import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.MockitoAnnotations.initMocks;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import models.User;
+import com.skeeterspring.UserService;
 import repositories.RoleRepository;
+import repositories.StudentRepository;
 import repositories.UserRepository;
 
 public class UserServiceTest {
 	
-	 @Mock
+		@Autowired
+		private StudentRepository studentRepo;
+		@Mock
 	    private UserRepository mockUserRepository;
 	    @Mock
 	    private RoleRepository mockRoleRepository;
@@ -65,6 +69,24 @@ public class UserServiceTest {
 
 	        assertEquals(email, result.getEmail());
 	    }
+	    
+	   
+	    
+	 /*  @Test
+	    public void
+	      givenUserExists_whenUserInformationIsRetrieved_thenRetrievedResourceIsCorrect()
+	      throws ClientProtocolException, IOException {
+	      
+	        // Given
+	        HttpUriRequest request = new HttpGet( "localhost"+"/students" );
+	     
+	        // When
+	        HttpResponse response = HttpClientBuilder.create().build().execute( request );
+	     
+	        // Then
+	       List<Student> resource = 
+	        assertThat( "eugenp", Matchers.is( resource.getLogin() ) );
+	    }*/
 	}
 
 

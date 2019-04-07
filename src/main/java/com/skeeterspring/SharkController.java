@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import models.Grade;
-import models.Payment;
-import models.Student;
-import models.User;
 import repositories.StudentRepository;
-
+import models.Student;
+import models.Grade;
+import models.User;
+import models.Payment;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -28,7 +28,7 @@ public class SharkController {
 	private StudentRepository studentRepository;
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	
 	@ModelAttribute("studentsList")
@@ -43,14 +43,18 @@ public class SharkController {
 	@GetMapping("/")
 	public String home(Model model){
 		
-		return "home";
+		return "index.html";
 
 	}
 	
 	@GetMapping("/students")
-public String showStudents(Model model){
-		model.addAttribute("student", new Student());
-		return "students";
+	@ResponseBody
+public List<Student> showStudents(){
+		Iterable<Student> iterable = studentRepository.findAll();
+		List<Student> array = StreamSupport
+		    .stream(iterable.spliterator(), false)
+		    .collect(Collectors.toList());
+		return array;
 	}
 	
 	@PostMapping("/newstudent")
@@ -179,4 +183,14 @@ public String showStudents(Model model){
 return modelAndView;
 
 }
+    @GetMapping(value="/admin/cpanel")
+    public String adminPanel(Model model){
+    	
+    	List<User> users = userService.findAllUsers();
+    	model.addAttribute("usersList", users);
+    	
+    	return "Cpanel";
+    	
+    }
+   
 }

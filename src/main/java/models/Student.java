@@ -12,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -40,12 +43,14 @@ public class Student {
 	@Size(min=2, max=20, message="Ne valja, jezik mora da ima izmedju 2 i 20 slova")
 	private String language;
 	
-	@ManyToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+	@JsonIgnore
+	@ManyToMany(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
 	@JoinTable(name="student_grade", joinColumns={@JoinColumn(name="student_id")},
 	inverseJoinColumns={@JoinColumn(name="grade_id")})
 	private Set<Grade> grades = new HashSet<>();
 	
-	@OneToMany(mappedBy="student",cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+	@JsonIgnore
+	@OneToMany(mappedBy="student",cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
 	private Set<Payment>payments= new HashSet<>();
 	
 	public Student(){}
