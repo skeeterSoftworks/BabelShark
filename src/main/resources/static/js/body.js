@@ -40,7 +40,7 @@ render(){
 		<main>
 		{content}	
 		</main>
-		
+		<p> Ovo je novi pasus </p>
 		<footer>All code and design by Bojan Dejanovic</footer>
 
 </div>

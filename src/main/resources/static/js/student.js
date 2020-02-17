@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 export default class Student extends Component{
 	
@@ -26,7 +27,7 @@ export default class Student extends Component{
 				<td style= {tdStyle}>{this.props.student.name}</td>
 				<td style= {tdStyle}>{this.props.student.level}</td>
 				<td style= {tdStyle}>{this.props.student.language}</td>
-				<button onClick={this.showGrades}>Show Grades</button>
+				<Button onClick={this.showGrades}>Show Grades</Button>
 				<button onClick={this.showPayments}>Show Payments </button>
 			</tr>
 		)

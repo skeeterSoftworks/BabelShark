@@ -95,7 +95,7 @@
 				<goal>npm</goal>
 			</goals>
 			<configuration>
-				<arguments>install</arguments>
+				<arguments>run start:dev</arguments>
 			</configuration>
 		</execution>
 		<execution>

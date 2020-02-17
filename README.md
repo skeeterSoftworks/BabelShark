@@ -8,6 +8,11 @@ in the application.properties.
 -----------------------------------------------------------------------------------------
 
 
+17.02.2020: It's been a while since I worked on Babelshark- I had pretty much abandoned it as a Demo project for the CV that helped me find my first IT job, but a few days back I decided to return to it: I wanted to use it as a testing arena for some of the skills I learned at work, and do some related experiments. 
+To cut the long story short, in the past three days I managed to get the hang of Webpack dev server + hot module replacement (yes, before this I really installed the project anew every time I made changes on the front end :O); I managed to get around the CORS issue (which I also encountered at work), and I finally imported react-bootstrap as npm module.
+
+---------------------------------------------------------2019-----------------------------------------------------------------
+
 07.04: I made the first big step in implementing React.js. After several unsuccessful Maven builds I finally managed to make the WebPack plugin pack the js files to a bundle.js (koji je to bezobrazluk da Webpack pretresa KOMENTARE? i zali se na nepostojece commented-out importe??). 
 
 I'm really starting to like the modularity of React.js. For now I have made that single student list component, and added buttons which will call/fetch grades and payments info from a Spring REST controller which means I will no longer need separate static HTML pages for every batch-info display, but will update all components asynchronously instead. 
@@ -39,7 +44,7 @@ Notable milestones completed last year:
 -Designed the most of the BabelShark DB using native MySQL (yet to add the Group table for individual courses);
 
 Big ToDos:
--Switch to using REST calls instead of serving HTML pages for each HTTP req;
+-add Jasper report with data for each student;
 -Use RxJava and Optionals;
 -Add Admin Control panel for manually processing user's role-requests by newly registered users;
 -Add Course/Group views to be available to users with 'Teacher' and 'Admin' role;

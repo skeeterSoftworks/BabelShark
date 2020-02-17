@@ -24,10 +24,11 @@ class App extends Component {
 	}
 	
 	 componentDidMount(){
+		 debugger;
 		 console.log("fetching initiated");
 		    
 		  fetch('http://localhost:8080/students', {
-			  
+			  mode: 'cors',
 			  credentials : 'same-origin' })
 	      .then(res => res.json())
 	      .then((result) => {
@@ -48,7 +49,7 @@ class App extends Component {
   render() {
     return(
 	<div>
-  <Body students={this.state.students}/> <p> {this.state.error} </p>
+  <Body students={this.state.students}/> 
 	</div>
 	)
   }
