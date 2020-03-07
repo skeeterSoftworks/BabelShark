@@ -4,12 +4,12 @@ export default class AppInfo extends Component{
 
 render(){
 	return(
-	<div>
+	<div className='app-info-container'>
 	<p>Welcome to BabelShark Home, a website for a fictitious Language school for foreign languages.
 			The website is a demo of my IT knowledge: </p>
 			
 			<dl>
-			<dt>Spring Boot, Spring MVC, Spring Security</dt>
+			<dt>Spring Boot, Spring MVC, Spring Security + React.js</dt>
 			<dd>The base of the entire webapp. Controllers and such. Login and authorization.<br/><br/> </dd>
 			<dt>JPA and Hibernate</dt><dd>Mapping objects to SQL tables.<br/><br/></dd>
 			<dt>MySQL</dt><dd>The DB was first set up manually via SQL console. Not that I don't know

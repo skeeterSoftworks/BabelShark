@@ -7,6 +7,7 @@ export default class Student extends Component{
 		super(props);
 		this.showGrades = this.showGrades.bind(this);
 		this.showPayments = this.showPayments.bind(this);
+		this.getReport = this. getReport.bind(this);
 		
 	}
 	
@@ -20,6 +21,25 @@ export default class Student extends Component{
 		console.log('fetching grades for '+ this.props.studId);
 	}
 	
+	getReport(){
+		 fetch('http://localhost:8080/print_report?studentid='+this.props.studId, {
+			 	mode: 'cors',
+			  credentials : 'same-origin',
+			 
+			    })
+	      .then(res =>res.text())
+	      .then((result) => {
+	    	  window.open(`data:application/pdf;base64,${result}`)
+	        },
+	        (errorInfo) => {
+	          this.setState({
+	            error: errorInfo
+	          });
+	         console.log('Eror, nije moguće dopremiti izvještaj.')
+	        }
+	      )
+	}
+	
 	
 	render() {
 		return (
@@ -27,8 +47,9 @@ export default class Student extends Component{
 				<td style= {tdStyle}>{this.props.student.name}</td>
 				<td style= {tdStyle}>{this.props.student.level}</td>
 				<td style= {tdStyle}>{this.props.student.language}</td>
-				<Button onClick={this.showGrades}>Show Grades</Button>
+				<Button className='btn-primary' onClick={this.showGrades}>Show Grades</Button>
 				<button onClick={this.showPayments}>Show Payments </button>
+				<button onClick={this.getReport}>Get full report </button>
 			</tr>
 		)
 	}

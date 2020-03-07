@@ -24,8 +24,6 @@ class App extends Component {
 	}
 	
 	 componentDidMount(){
-		 debugger;
-		 console.log("fetching initiated");
 		    
 		  fetch('http://localhost:8080/students', {
 			  mode: 'cors',
@@ -34,8 +32,7 @@ class App extends Component {
 	      .then((result) => {
 	          this.setState({
 	            students : result
-	          }); 
-	          console.log('Fetching done');
+	          });
 	        },
 	        (errorInfo) => {
 	          this.setState({

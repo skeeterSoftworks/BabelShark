@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.skeeterpring</groupId>
 	<artifactId>BabelSharkV2</artifactId>
@@ -35,21 +35,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		 <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
- 			 <groupId>org.apache.httpcomponents</groupId>
-  			<artifactId>httpclient</artifactId>
-  			<version>4.5.8</version>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,11 +57,16 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-    <groupId>org.mockito</groupId>
-    <artifactId>mockito-all</artifactId>
-    <version>1.9.5</version>
-    <scope>test</scope>
-</dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.11.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -70,42 +75,42 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
-	<groupId>com.github.eirslett</groupId>
-	<artifactId>frontend-maven-plugin</artifactId>
-	<version>1.6</version>
-	<configuration>
-		<installDirectory>target</installDirectory>
-	</configuration>
-	<executions>
-		<execution>
-			<id>install node and npm</id>
-			<goals>
-				<goal>install-node-and-npm</goal>
-			</goals>
-			<configuration>
-				<nodeVersion>v10.11.0</nodeVersion>
-				<npmVersion>6.4.1</npmVersion>
-			</configuration>
-		</execution>
-		<execution>
-			<id>npm install</id>
-			<goals>
-				<goal>npm</goal>
-			</goals>
-			<configuration>
-				<arguments>run start:dev</arguments>
-			</configuration>
-		</execution>
-		<execution>
-			<id>webpack build</id>
-			<goals>
-				<goal>webpack</goal>
-			</goals>
-		</execution>
-	</executions>
-</plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.6</version>
+				<configuration>
+					<installDirectory>target</installDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v10.11.0</nodeVersion>
+							<npmVersion>6.4.1</npmVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run start:dev</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>webpack build</id>
+						<goals>
+							<goal>webpack</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

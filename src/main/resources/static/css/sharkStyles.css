@@ -1,19 +1,26 @@
 body {
-		margin: 10px;
-		padding : 10px;
-		background-color: #BBDEFB;
+	margin: 10px;
+	padding: 10px;
+	background-color: #BBDEFB;
 }
 
-input {margin: 6px;
-
+input {
+	margin: 6px;
 }
 
-#mainCaption{
-	font-size : 40px;
+#mainCaption {
+	font-size: 40px;
 	font-family: "Times New Roman", Times, serif;
 	text-shadow: 3px 3px 3px #666;
-align: middle;
-margin-left: 300px;
+	align: middle;
+	margin-left: 300px;
 }
 
-main { margin-left: 165px; }
+main {
+	margin-left: 165px;
+}
+
+
+.btn-primary{
+	border-radius: 10px;
+}
